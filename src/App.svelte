@@ -1,4 +1,5 @@
 <script>
+    import Input from "./lib/components/Input.svelte";
     import Nav from "./lib/components/Nav.svelte";
     import Table from "./lib/components/Table.svelte";
 
@@ -14,11 +15,35 @@
 
 <main>
 
-    <Table caption="tablaa"/>
+    <section class="showcase">
+    
+        <form action="" method="post">
+            <Input title="Nombre" name="nombre" placeholder="..."/>
+            <Input title="Edad" name="edad" placeholder="..."/>
+            <Input title="Ciudad" name="ciudad" placeholder="..."/>
+        </form>
+        
+        <Table caption="Test"/>
+
+    </section>
 
 </main>
 
 
 
 <style>
+    .showcase{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        padding: 20px 10px;
+
+
+    }
+
+    .showcase form{
+
+    }
 </style>
