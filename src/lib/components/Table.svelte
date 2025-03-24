@@ -1,8 +1,10 @@
 <script>
-let data = $state(null);
+    import { onMount } from "svelte";
 
-function fetchCiudadanos(){
-        fetch("http://localhost/www/sveltecrud/backend/test.php")
+    let data = $state(null);
+
+    function getData(queryTo){
+        fetch("http://localhost/www/sveltecrud/backend/test.php?queryTo="+queryTo)
         .then(response => {
             return response.json();
         })
@@ -13,8 +15,12 @@ function fetchCiudadanos(){
 
     }
 
+    onMount(()=>{
+        //send Table.svelte propr "queryTo"
+        getData(queryTo); 
+    })
 
-let { caption, queryTo } = $props();
+    let { caption, queryTo } = $props();
 </script>
 
 
@@ -27,6 +33,12 @@ let { caption, queryTo } = $props();
                 <th></th>
                 <th></th>
                 <th></th>
+            </tr>
+        {:else if data}
+            <tr>
+                {#each data.columns as column}
+                    <th>{column}</th>
+                {/each}
             </tr>
         {/if}
     </thead>
@@ -52,6 +64,14 @@ let { caption, queryTo } = $props();
                 <td></td>
                 <td></td>
             </tr>
+        {:else if data}
+            {#each data.fields as field}
+                <tr>
+                    <td>{field.nombre}</td>
+                    <td>{field.edad}</td>
+                    <td>{field.ciudad}</td>
+                </tr>
+            {/each}
         {/if}
     </tbody>
 </table>
@@ -73,7 +93,7 @@ let { caption, queryTo } = $props();
     }
 
     th, td{
-        padding: 20px 30px;
+        padding: 15px 20px;
         text-align: center;
         border-top: 1px #ffffff77 solid;
     }
