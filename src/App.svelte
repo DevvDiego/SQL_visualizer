@@ -4,6 +4,23 @@
     import Nav from "./lib/components/Nav.svelte";
     import Table from "./lib/components/Table.svelte";
 
+
+    function fetchCiudadanos(){
+        fetch("../backend/test.php")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+            ciudadanos = data;
+            // Por ejemplo, muestra el nombre en la página
+            // `Nombre: ${data.nombre}, Edad: ${data.edad}, Ciudad: ${data.ciudad}`;
+        })
+
+    }
+
+    let ciudadanos = [{}];
+
     
 </script>
 
@@ -17,15 +34,17 @@
 <main>
 
     <section class="showcase">
-    
-        <form action="" method="post">
+    <!-- ! USE FETCH for a no reload sending form -->
+        <form action="../backend/dbconn.php" method="post">
             <Input title="Nombre" name="nombre" placeholder="..."/>
             <Input title="Edad" name="edad" placeholder="..."/>
             <Input title="Ciudad" name="ciudad" placeholder="..."/>
             <Button type="submit" />
         </form>
         
-        <Table caption="Test"/>
+        <button onclick={fetchCiudadanos}>Fetch db</button>
+        
+        <Table caption="Ciudadanos" data={ciudadanos}/>
 
     </section>
 
