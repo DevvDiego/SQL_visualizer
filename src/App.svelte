@@ -1,4 +1,5 @@
 <script>
+    import Button from "./lib/components/Button.svelte";
     import Input from "./lib/components/Input.svelte";
     import Nav from "./lib/components/Nav.svelte";
     import Table from "./lib/components/Table.svelte";
@@ -21,6 +22,7 @@
             <Input title="Nombre" name="nombre" placeholder="..."/>
             <Input title="Edad" name="edad" placeholder="..."/>
             <Input title="Ciudad" name="ciudad" placeholder="..."/>
+            <Button type="submit" />
         </form>
         
         <Table caption="Test"/>
@@ -43,7 +45,4 @@
 
     }
 
-    .showcase form{
-
-    }
 </style>
