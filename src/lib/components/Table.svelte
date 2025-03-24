@@ -1,8 +1,20 @@
 <script>
+let data = $state(null);
+
+function fetchCiudadanos(){
+        fetch("http://localhost/www/sveltecrud/backend/test.php")
+        .then(response => {
+            return response.json();
+        })
+        .then(json => {
+            console.log("datos de tabla cargados");
+            data = json;
+        })
+
+    }
 
 
-
-let { caption } = $props();
+let { caption, queryTo } = $props();
 </script>
 
 
@@ -10,38 +22,37 @@ let { caption } = $props();
 <table>
     <caption>{caption}</caption>
     <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Edad</th>
-            <th>Ciudad</th>
-        </tr>
+        {#if !data}
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        {/if}
     </thead>
     <tbody>
-        <tr>
-            <td>Diego</td>
-            <td>25</td>
-            <td>Ciudad de México</td>
-        </tr>
-        <tr>
-            <td>Diego</td>
-            <td>25</td>
-            <td>Ciudad de México</td>
-        </tr>
-        <tr>
-            <td>Elena</td>
-            <td>30</td>
-            <td>Guadalajara</td>
-        </tr>
-        <tr>
-            <td>Elena</td>
-            <td>30</td>
-            <td>Guadalajara</td>
-        </tr>
-        <tr>
-            <td>Elena</td>
-            <td>30</td>
-            <td>Guadalajara</td>
-        </tr>
+        {#if !data}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        {/if}
     </tbody>
 </table>
 
@@ -58,16 +69,19 @@ let { caption } = $props();
 
         font-size: 1.3rem;
         font-weight: bold;
-        padding: 10px 0px;
+        padding: 10px;
     }
 
     th, td{
-        padding: 15px;
+        padding: 20px 30px;
         text-align: center;
+        border-top: 1px #ffffff77 solid;
     }
 
     tbody tr:nth-child(odd){
         background-color: #282828;
     }
+
+    
 
 </style>
