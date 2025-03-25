@@ -4,7 +4,7 @@
     let data = $state(null);
 
     function getData(queryTo){
-        fetch("http://localhost/www/sveltecrud/backend/test.php?queryTo="+queryTo)
+        fetch("http://localhost/www/sveltecrud/backend/select.php?queryTo="+queryTo)
         .then(response => {
             return response.json();
         })
