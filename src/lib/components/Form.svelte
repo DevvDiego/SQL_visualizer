@@ -1,11 +1,11 @@
 <script>
 
     function getFormData(e){
-        const formData = {};
+        const formData = new FormData();
         const inputs = e.target.elements;    //e contiene los elementos children del form
         for (let input of inputs) {
             if (input.type !== 'submit') {   //previene la deteccion de el boton submit
-                formData[input.name] = input.value;
+                formData.append(input.name, input.value);
             }
         }     
         
@@ -15,16 +15,15 @@
     function sendFormData(formData){
         fetch("http://localhost/www/sveltecrud/backend/insert.php",{
             method: "POST", 
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(formData)
+            body: formData
         })
-        .then(response =>{
-            return response.json();
+        .then(response => {
+            // return response.json();
+            return response.text();
         })
-        .then(json =>{
-            console.log("respuesta de el envio del form: "+json)
-        })
-
+        // .then(json => {
+        //     console.log(json);
+        // })
     }
 
     function handleForm(e){
