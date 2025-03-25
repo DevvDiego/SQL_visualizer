@@ -8,6 +8,8 @@ try{
         $param = $_GET["queryTo"]; 
     }
 
+    $query_result = mysqli_query($dbconn, "SELECT * FROM " . $param);
+
     //Get column names
     $columns = [];
     foreach ($query_result->fetch_fields() as $column) {
