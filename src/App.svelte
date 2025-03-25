@@ -1,11 +1,12 @@
 <script>
     import Button from "./lib/components/Button.svelte";
+    import Form from "./lib/components/Form.svelte";
     import Input from "./lib/components/Input.svelte";
     import Nav from "./lib/components/Nav.svelte";
     import Table from "./lib/components/Table.svelte";
-
-
     
+
+    let refreshTableCiudadanos = $state(false);
 </script>
 
 
@@ -22,18 +23,17 @@
         
     <!-- ! USE FETCH for a no reload sending form -->
 
-<!-- 
 
-        <form action="../backend/dbconn.php" method="post">
+
+        <Form bind:refresh={refreshTableCiudadanos}>
             <Input title="Nombre" name="nombre" placeholder="..."/>
             <Input title="Edad" name="edad" placeholder="..."/>
             <Input title="Ciudad" name="ciudad" placeholder="..."/>
-            <Button type="submit" />
-        </form> -->
-        
-        <!-- <button onclick={fetchCiudadanos}>Fetch db</button> -->
-        
-        <Table caption="Ciudadanos" queryTo={"ciudadano"} />
+            <!-- <Button type="submit" /> -->
+            <button type="submit">submit</button>
+        </Form>
+                
+        <Table bind:refresh={refreshTableCiudadanos} caption="Ciudadanos" queryTo={"ciudadano"} />
 
     </section>
 

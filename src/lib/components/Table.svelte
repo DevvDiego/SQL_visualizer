@@ -1,7 +1,16 @@
 <script>
     import { onMount } from "svelte";
 
-    let data = $state(null);
+    onMount(()=>{
+        //send Table.svelte propr "queryTo"
+        getData(queryTo); 
+    })
+
+    $effect(()=>{
+        if(refresh){
+            getData(queryTo);
+        }
+    })
 
     function getData(queryTo){
         fetch("http://localhost/www/sveltecrud/backend/select.php?queryTo="+queryTo)
@@ -11,16 +20,17 @@
         .then(json => {
             console.log("datos de tabla cargados");
             data = json;
+
+            refresh = false; //we think the table might have been refreshed, so we falsy it
         })
 
     }
 
-    onMount(()=>{
-        //send Table.svelte propr "queryTo"
-        getData(queryTo); 
-    })
+    let data = $state(null);
 
-    let { caption, queryTo } = $props();
+
+
+    let { caption, queryTo, refresh = $bindable() } = $props();
 </script>
 
 
