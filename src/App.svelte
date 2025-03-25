@@ -20,17 +20,11 @@
 
     <section class="showcase">
 
-        
-    <!-- ! USE FETCH for a no reload sending form -->
-
-
-
         <Form bind:refresh={refreshTableCiudadanos}>
             <Input title="Nombre" name="nombre" placeholder="..."/>
             <Input title="Edad" name="edad" placeholder="..."/>
             <Input title="Ciudad" name="ciudad" placeholder="..."/>
-            <!-- <Button type="submit" /> -->
-            <button type="submit">submit</button>
+            <Button type="submit"/>
         </Form>
                 
         <Table bind:refresh={refreshTableCiudadanos} caption="Ciudadanos" queryTo={"ciudadano"} />
