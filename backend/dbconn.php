@@ -1,4 +1,5 @@
 <?php
+include("config/headers.php");
 
 $user="root";
 $host="localhost";
