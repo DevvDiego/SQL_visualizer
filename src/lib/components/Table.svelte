@@ -30,9 +30,9 @@
     <thead>
         {#if !data}
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th class="skeleton"></th>
+                <th class="skeleton"></th>
+                <th class="skeleton"></th>
             </tr>
         {:else if data}
             <tr>
@@ -45,24 +45,19 @@
     <tbody>
         {#if !data}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="skeleton"></td>
+                <td class="skeleton"></td>
+                <td class="skeleton"></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="skeleton"></td>
+                <td class="skeleton"></td>
+                <td class="skeleton"></td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="skeleton"></td>
+                <td class="skeleton"></td>
+                <td class="skeleton"></td>
             </tr>
         {:else if data}
             {#each data.fields as field}
@@ -101,7 +96,23 @@
     tbody tr:nth-child(odd){
         background-color: #282828;
     }
-
     
+    /* Estilo base para el contenedor de carga */
+    .skeleton {
+        width: 100%;
+        height: 1.5em;
+        background: linear-gradient(90deg, #151515 25%, #303030 50%, #151515 75%);
+        background-size: 200% 100%;
+        animation: skeleton-animation 1.2s infinite;
+    }
 
+    /* Animación para el efecto de "esqueleto" */
+    @keyframes skeleton-animation {
+      0% {
+        background-position: 100% 0;
+      }
+      100% {
+        background-position: -100% 0;
+      }
+    }
 </style>
