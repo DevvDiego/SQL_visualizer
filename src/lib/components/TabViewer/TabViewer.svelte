@@ -35,9 +35,9 @@
 
 <style>
 
-    section{
+    /* section{
         
-    }
+    } */
 
     header{
 
@@ -51,6 +51,20 @@
         flex-wrap: nowrap;
 
         list-style-type: none;
+    }
+
+    header ul button{
+        cursor: pointer;
+
+        font-size: 1rem;
+        font-weight: normal;
+
+        background-color: #151515;
+        color: #ffffffde;
+
+        border: none;
+        padding: 10px 15px;
+
     }
 
 </style>
