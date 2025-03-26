@@ -4,16 +4,8 @@ let { children } = $props();
 
 
 
-<nav>
-
-    <ul>
-        <li>
-            
-            {@render children()}
-
-        </li>
-    </ul>
-
+<nav>        
+    {@render children?.()}
 </nav>
 
 

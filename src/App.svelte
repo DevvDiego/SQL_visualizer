@@ -18,7 +18,7 @@
 
 <Nav>
     <button onclick={() => navigate("/")}>Dashboard</button>
-    <button onclick={() => navigate("/about")}>Edit</button>
+    <button onclick={() => navigate("/about")}>Edit</button> 
 </Nav>
 
 {#if currentRoute === "/"}
@@ -29,3 +29,18 @@
     <h1>Página no encontrada</h1>
 {/if}
 
+
+<style>
+    button{
+        cursor: pointer;
+
+        font-size: 1rem;
+        font-weight: normal;
+
+        background-color: #151515;
+        color: #ffffffde;
+
+        border: none;
+        padding: 10px 15px;
+    }
+</style>
