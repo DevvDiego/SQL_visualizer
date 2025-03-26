@@ -1,6 +1,5 @@
 <script>
-    import Home from "./routes/Home.svelte";
-    import About from './routes/About.svelte';
+    import Dashboard from './routes/Dashboard.svelte';
 
     let currentRoute = "/";
 
@@ -16,15 +15,13 @@
 </script>
 
 <nav>
-    <button onclick={() => navigate("/")}>Inicio</button>
-    <button onclick={() => navigate("/about")}>Sobre Nosotros</button>
-    <button onclick={() => navigate("/contact")}>Contacto</button>
+    <button onclick={() => navigate("/")}>Dashboard</button>
 </nav>
 
 {#if currentRoute === "/"}
-    <Home />
-{:else if currentRoute === "/about"}
-    <About />
+    <Dashboard />
+<!-- {:else if currentRoute === "/about"}
+    <About /> -->
 {:else}
     <h1>Página no encontrada</h1>
 {/if}
