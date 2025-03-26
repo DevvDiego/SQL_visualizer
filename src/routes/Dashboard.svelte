@@ -4,6 +4,8 @@
     import Input from "../lib/components/Input.svelte";
     import Nav from "../lib/components/Nav.svelte";
     import Table from "../lib/components/Table.svelte";
+    import Tab from "../lib/components/TabViewer/Tab.svelte";
+    import TabViewer from "../lib/components/TabViewer/TabViewer.svelte";
 
     let refreshTableCiudadanos = $state(false);
 </script>
@@ -16,7 +18,7 @@
 
 <main>
 
-    <section class="showcase">
+    <!-- <section class="showcase">
         
         <Form bind:refresh={refreshTableCiudadanos}>
             <Input title="Nombre" name="nombre" placeholder="..."/>
@@ -30,19 +32,26 @@
             title="Ciudadanos" queryTo={"ciudadano"} 
         /> 
 
-    </section>
+    </section> -->
+
+    <TabViewer>
+        {#snippet tabs()}
+            <Tab title="Insertar"/>
+            <Tab title="Eliminar"/>
+            <Tab title="Actualizar"/>
+        {/snippet}
+        
+         
+        <Table bind:refresh={refreshTableCiudadanos} 
+            title="Ciudadanos" queryTo={"ciudadano"} 
+        /> 
+    </TabViewer>
+
 
 </main>
 
 
 
 <style>
-    .showcase{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 20px;
-
-    }
 
 </style>
