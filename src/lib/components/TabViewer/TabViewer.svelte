@@ -1,24 +1,32 @@
 <script>
+    let currentTab = $state(0);
+    function changeTab(index) {
+        currentTab = index;
+    }
 
-let currentTab = $state(0);
-let tabsArray = $state([{
-}]);
-
-
-let { children, tabs } = $props();
+    let { tabs, } = $props();
 </script>
-
 
 
 <section>
     <header>
         <ul>
-            {@render tabs()}
+            {#each tabs as tab, index}
+                <li>
+                    <button onclick={()=>{changeTab(index)}}>
+                        {tab.title}
+                    </button>
+                </li>
+            {/each}
         </ul>
     </header>
 
     <div>
-        {@render children()}
+        {#if tabs[currentTab]}
+            {#each tabs[currentTab].content as content}
+                {@render content()}
+            {/each}
+        {/if}
     </div>
     
 </section>
