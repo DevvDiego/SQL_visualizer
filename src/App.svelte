@@ -16,16 +16,16 @@
 </script>
 
 <nav>
-  <button on:click={() => navigate("/")}>Inicio</button>
-  <button on:click={() => navigate("/about")}>Sobre Nosotros</button>
-  <button on:click={() => navigate("/contact")}>Contacto</button>
+    <button onclick={() => navigate("/")}>Inicio</button>
+    <button onclick={() => navigate("/about")}>Sobre Nosotros</button>
+    <button onclick={() => navigate("/contact")}>Contacto</button>
 </nav>
 
 {#if currentRoute === "/"}
-  <Home />
+    <Home />
 {:else if currentRoute === "/about"}
-  <About />
+    <About />
 {:else}
-  <h1>Página no encontrada</h1>
+    <h1>Página no encontrada</h1>
 {/if}
 
