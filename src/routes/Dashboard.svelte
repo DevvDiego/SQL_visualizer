@@ -1,11 +1,7 @@
 <script>
-    import Button from "../lib/components/Button.svelte";
-    import Form from "../lib/components/Form.svelte";
-    import Input from "../lib/components/Input.svelte";
     import Nav from "../lib/components/Nav.svelte";
     import Table from "../lib/components/Table.svelte";
-    import Tab from "../lib/components/TabViewer/Tab.svelte";
-    import TabViewer from "../lib/components/TabViewer/TabViewer.svelte";
+    import TabViewer from "../lib/components/TabViewer.svelte";
 
     let refreshTableCiudadanos = $state(false);
 </script>
@@ -33,19 +29,36 @@
         /> 
 
     </section> -->
-
-    <TabViewer>
-        {#snippet tabs()}
-            <Tab title="Insertar"/>
-            <Tab title="Eliminar"/>
-            <Tab title="Actualizar"/>
-        {/snippet}
-        
-         
+    {#snippet insertarContent()}
+    
         <Table bind:refresh={refreshTableCiudadanos} 
             title="Ciudadanos" queryTo={"ciudadano"} 
-        /> 
-    </TabViewer>
+        />
+    
+    {/snippet}
+    
+    {#snippet eliminarContent()}
+        <div>
+        <h2>Eliminar</h2>
+        <p>Contenido para el tab Eliminar.</p>
+        </div>
+    {/snippet}
+    
+    {#snippet actualizarContent()}
+        <div>
+        <h2>Actualizar</h2>
+        <p>Contenido para el tab Actualizar.</p>
+        </div>
+    {/snippet}
+
+    
+    <TabViewer tabs={
+        [
+            { title: "Insertar", content: [insertarContent] },
+            { title: "Eliminar", content: [eliminarContent] },
+            { title: "Actualizar", content: [actualizarContent] }
+        ]}
+    ></TabViewer>
 
 
 </main>
