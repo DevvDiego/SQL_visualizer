@@ -4,7 +4,7 @@
         currentTab = index;
     }
 
-    let { tabs, } = $props();
+    let { tabs, children } = $props();
 </script>
 
 
@@ -21,13 +21,16 @@
         </ul>
     </header>
 
-    <div>
-        {#if tabs[currentTab]}
-            {#each tabs[currentTab].content as content}
-                {@render content()}
-            {/each}
-        {/if}
-    </div>
+
+    {#if tabs[currentTab]}
+        {#each tabs[currentTab].content as content}
+            {@render content()}
+        {/each}
+    {/if}
+
+
+    {@render children()}
+
     
 </section>
 
