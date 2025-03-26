@@ -31,13 +31,12 @@
 
 
 
-    let { caption, queryTo, refresh = $bindable() } = $props();
+    let { title, queryTo, refresh = $bindable() } = $props();
 </script>
 
 
-
 <table>
-    <caption>{caption}</caption>
+    <caption>{title}</caption>
     <thead>
         {#if !data}
             <tr>
@@ -83,25 +82,37 @@
 </table>
 
 <style>
-    
-    table{
-        background-color: #151515;
 
-        width: 90%;
-        margin: auto;
 
-    }
-
-    table caption{
-        
+    caption{ 
         font-size: 1.3rem;
         font-weight: bold;
         text-align: left;
         padding: 10px;
     }
 
-    th, td{
-        font-weight: 600;
+    table{
+        background-color: #151515;
+
+        width: 100%;
+        /* margin: auto; */
+
+    }
+
+    th{
+        font-weight: bold;
+    
+        font-size: 1rem;
+        text-align: center;
+
+        padding: 10px 5px;
+        box-shadow: 0px 0px 4px #ffffff41;
+    
+    }
+
+    td{
+        font-weight: normal;
+    
         font-size: 1rem;
         text-align: center;
 
@@ -109,10 +120,6 @@
         box-shadow: 0px 0px 4px #ffffff41;
     }
 
-
-    tbody tr:nth-child(odd){
-        background-color: #282828;
-    }
     
     /* Estilo base para el contenedor de carga */
     .skeleton {
