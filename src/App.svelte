@@ -1,5 +1,6 @@
 <script>
     import Dashboard from './routes/Dashboard.svelte';
+    import Edit from './routes/Edit.svelte';
 
     let currentRoute = "/";
 
@@ -20,8 +21,8 @@
 
 {#if currentRoute === "/"}
     <Dashboard />
-<!-- {:else if currentRoute === "/about"}
-    <About /> -->
+{:else if currentRoute === "/edit"}
+    <Edit />
 {:else}
     <h1>Página no encontrada</h1>
 {/if}
