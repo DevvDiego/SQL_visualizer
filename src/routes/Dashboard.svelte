@@ -1,49 +1,46 @@
 <script>
+    import Button from "../lib/components/Button.svelte";
+    import Form from "../lib/components/Form.svelte";
+    import Input from "../lib/components/Input.svelte";
     import Table from "../lib/components/Table.svelte";
     import TabViewer from "../lib/components/TabViewer.svelte";
 
     let refreshTableCiudadanos = $state(false);
 </script>
 
+<!-- TODO convertir esta pagina a un componente para simplificar -->
+<!-- TODO agregar estilos que hagan parecer verdaderamente un solo form por pagina -->
+
 
 
 <main>
-
-    <!-- <section class="showcase">
-        
+    {#snippet insertarContent()}
+    
         <Form bind:refresh={refreshTableCiudadanos}>
             <Input title="Nombre" name="nombre" placeholder="..."/>
             <Input title="Edad" name="edad" placeholder="..."/>
             <Input title="Ciudad" name="ciudad" placeholder="..."/>
             <Button type="submit"/>
         </Form> 
-
-                
-       <Table bind:refresh={refreshTableCiudadanos} 
-            title="Ciudadanos" queryTo={"ciudadano"} 
-        /> 
-
-    </section> -->
-    {#snippet insertarContent()}
-    
-        <Table bind:refresh={refreshTableCiudadanos} 
-            title="Ciudadanos" queryTo={"ciudadano"} 
-        />
     
     {/snippet}
     
     {#snippet eliminarContent()}
-        <div>
-        <h2>Eliminar</h2>
-        <p>Contenido para el tab Eliminar.</p>
-        </div>
+
+        <Form bind:refresh={refreshTableCiudadanos}>
+            <h2>Eliminar</h2>
+            <Button type="submit"/>
+        </Form> 
+
     {/snippet}
     
     {#snippet actualizarContent()}
-        <div>
-        <h2>Actualizar</h2>
-        <p>Contenido para el tab Actualizar.</p>
-        </div>
+    
+        <Form bind:refresh={refreshTableCiudadanos}>
+            <h2>Actualizar</h2>
+            <Button type="submit"/>
+        </Form>
+
     {/snippet}
 
     
@@ -53,7 +50,13 @@
             { title: "Eliminar", content: [eliminarContent] },
             { title: "Actualizar", content: [actualizarContent] }
         ]}
-    ></TabViewer>
+    >
+
+        <Table bind:refresh={refreshTableCiudadanos} 
+            title="Ciudadanos" queryTo={"ciudadano"} 
+        />
+
+    </TabViewer>
 
 
 </main>
