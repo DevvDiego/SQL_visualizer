@@ -1,22 +1,19 @@
 <script>
-
-// links = [{"text":"",}]
-let { title = "App",  } = $props();
+let { children } = $props();
 </script>
 
 
 
 <nav>
 
-    <h1>
-        {title}
-    </h1>
-
-    <!-- <ul>
+    <ul>
         <li>
+            
+            {@render children()}
 
         </li>
-    </ul> -->
+    </ul>
+
 </nav>
 
 

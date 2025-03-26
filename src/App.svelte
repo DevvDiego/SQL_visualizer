@@ -1,4 +1,5 @@
 <script>
+    import Nav from './lib/components/Nav.svelte';
     import Dashboard from './routes/Dashboard.svelte';
     import Edit from './routes/Edit.svelte';
 
@@ -15,9 +16,10 @@
     };
 </script>
 
-<nav>
+<Nav>
     <button onclick={() => navigate("/")}>Dashboard</button>
-</nav>
+    <button onclick={() => navigate("/about")}>Edit</button>
+</Nav>
 
 {#if currentRoute === "/"}
     <Dashboard />
