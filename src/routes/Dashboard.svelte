@@ -1,14 +1,9 @@
 <script>
-    import Nav from "../lib/components/Nav.svelte";
     import Table from "../lib/components/Table.svelte";
     import TabViewer from "../lib/components/TabViewer.svelte";
 
     let refreshTableCiudadanos = $state(false);
 </script>
-
-
-
-<Nav/>
 
 
 
