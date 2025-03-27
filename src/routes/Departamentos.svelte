@@ -18,10 +18,8 @@
 
 {#snippet insertarContent()}
 
-    <Form {target} bind:refreshTable>
+    <Form {target} action={"insert"} bind:refreshTable>
         <Input title="Nombre" name="nombre" placeholder="..."/>
-        <Input title="Edad" name="edad" placeholder="..."/>
-        <Input title="Ciudad" name="ciudad" placeholder="..."/>
         <Button type="submit"/>
     </Form> 
 
@@ -29,8 +27,8 @@
 
 {#snippet eliminarContent()}
 
-    <Form {target} bind:refreshTable>
-        <h2>Eliminar</h2>
+    <Form {target} action={"delete"} bind:refreshTable>
+        <Input title="Nombre" name="nombre" placeholder="..." />
         <Button type="submit"/>
     </Form> 
 
@@ -38,8 +36,8 @@
 
 {#snippet actualizarContent()}
 
-    <Form {target} bind:refreshTable>
-        <h2>Actualizar</h2>
+    <Form {target} action={"update"} bind:refreshTable>
+        <Input title="Identificador" name="id" placeholder="..." />
         <Button type="submit"/>
     </Form>
 
