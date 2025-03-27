@@ -7,14 +7,30 @@
             if (input.type !== 'submit') {   //previene la deteccion de el boton submit
                 formData.append(input.name, input.value);
             }
-        }     
+        }
+
+
+        //añade a que tabla se envia la accion
+        formData.append("target", target);
         
         return formData;
     }
 
     function sendFormData(formData){
-        let URL = "http://localhost/www/sveltecrud/backend/insert.php?" + target;
+        let URL = "http://localhost/www/sveltecrud/backend/";
+          
+        if(action == "insert"){
+            URL = URL.concat("insert.php")
+        }
         
+        if(action == "delete"){
+            URL = URL.concat("delete.php")
+        }
+
+        if(action == "update"){
+            URL = URL.concat("update.php")
+        }
+
         fetch(URL,{
             method: "POST", 
             body: formData
@@ -23,9 +39,9 @@
             // return response.json();
             return response.text();
         })
-        // .then(json => {
-        //     console.log(json);
-        // })
+        .then(json => {
+            console.log(json);
+        })
     }
 
     function handleForm(e){
@@ -37,8 +53,8 @@
         refreshTable = true;
     }
 
-
-    let { target, refreshTable = $bindable(), children } = $props();
+    
+    let { target, action, refreshTable = $bindable(), children } = $props();
 </script>
 
 
