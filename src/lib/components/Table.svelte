@@ -70,11 +70,13 @@
                 <td class="skeleton"></td>
             </tr>
         {:else if data}
-            {#each data.fields as field}
+            {#each data.fields as row}
                 <tr>
-                    <td>{field.nombre}</td>
-                    <td>{field.edad}</td>
-                    <td>{field.ciudad}</td>
+                    {#each data.columns as column}
+                        <td>
+                            { row[column] }
+                        </td>
+                    {/each}
                 </tr>
             {/each}
         {/if}
