@@ -2,7 +2,6 @@
     import Nav from './lib/components/Nav.svelte';
 
     import Dashboard from './routes/Dashboard.svelte';
-    import Ciudadanos from './routes/Ciudadanos.svelte';
     import Departamentos from './routes/Departamentos.svelte';
     import Cursos from './routes/Cursos.svelte';
     import Profesores from './routes/Profesores.svelte';
