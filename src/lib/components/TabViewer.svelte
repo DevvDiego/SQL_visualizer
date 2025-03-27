@@ -13,7 +13,7 @@
         <ul>
             {#each tabs as tab, index}
                 <li>
-                    <button onclick={()=>{changeTab(index)}}>
+                    <button class={currentTab == index ? "selected":""} onclick={()=>{changeTab(index)}}>
                         {tab.title}
                     </button>
                 </li>
@@ -68,6 +68,11 @@
         border: none;
         padding: 10px 15px;
 
+    }
+
+    header ul button.selected{
+        background-color: #ffffffde;
+        color: #151515;
     }
 
 </style>
