@@ -3,7 +3,7 @@ include("config/headers.php");
 
 $user="root";
 $host="localhost";
-$db="ciudadanos";
+$db="universidad";
 $pswd="";
 
 // Create connection
