@@ -1,6 +1,5 @@
 <?php
 include("dbconn.php");
-header('Content-Type: application/json');
     
 
 function insert_departamentos($dbconn){
@@ -73,6 +72,12 @@ try{
     switch ($targetTable) {
         case "departamentos":
             insert_departamentos($dbconn);
+            break;
+        case "cursos":
+            insert_cursos($dbconn);
+            break;
+        case "profesores":
+            insert_profesores($dbconn);
             break;
         
         default:
