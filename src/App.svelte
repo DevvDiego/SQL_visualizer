@@ -1,7 +1,11 @@
 <script>
     import Nav from './lib/components/Nav.svelte';
+
     import Dashboard from './routes/Dashboard.svelte';
-    import Edit from './routes/Edit.svelte';
+    import Ciudadanos from './routes/Ciudadanos.svelte';
+    import Departamentos from './routes/Departamentos.svelte';
+    import Cursos from './routes/Cursos.svelte';
+    import Profesores from './routes/Profesores.svelte';
 
     let currentRoute = "/";
 
@@ -18,13 +22,19 @@
 
 <Nav>
     <button onclick={() => navigate("/")}>Dashboard</button>
-    <button onclick={() => navigate("/about")}>Edit</button> 
+    <button onclick={() => navigate("/departamentos")}>Departamentos</button> 
+    <button onclick={() => navigate("/cursos")}>Cursos</button> 
+    <button onclick={() => navigate("/profesores")}>Profesores</button> 
 </Nav>
 
 {#if currentRoute === "/"}
     <Dashboard />
-{:else if currentRoute === "/edit"}
-    <Edit />
+{:else if currentRoute === "/departamentos"}
+    <Departamentos />
+{:else if currentRoute === "/cursos"}
+    <Cursos />
+{:else if currentRoute === "/profesores"}
+    <Profesores />
 {:else}
     <h1>Página no encontrada</h1>
 {/if}
