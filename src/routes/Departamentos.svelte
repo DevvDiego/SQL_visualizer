@@ -5,7 +5,10 @@
     import Table from "../lib/components/Table.svelte";
     import TabViewer from "../lib/components/TabViewer.svelte";
 
-    let refreshTableCiudadanos = $state(false);
+    let refreshTable = $state(false);
+
+    let target = "departamentos";
+
 </script>
 
 <!-- TODO convertir esta pagina a un componente para simplificar -->
@@ -15,7 +18,7 @@
 
 {#snippet insertarContent()}
 
-    <Form bind:refresh={refreshTableCiudadanos}>
+    <Form {target} bind:refreshTable>
         <Input title="Nombre" name="nombre" placeholder="..."/>
         <Input title="Edad" name="edad" placeholder="..."/>
         <Input title="Ciudad" name="ciudad" placeholder="..."/>
@@ -26,7 +29,7 @@
 
 {#snippet eliminarContent()}
 
-    <Form bind:refresh={refreshTableCiudadanos}>
+    <Form {target} bind:refreshTable>
         <h2>Eliminar</h2>
         <Button type="submit"/>
     </Form> 
@@ -35,7 +38,7 @@
 
 {#snippet actualizarContent()}
 
-    <Form bind:refresh={refreshTableCiudadanos}>
+    <Form {target} bind:refreshTable>
         <h2>Actualizar</h2>
         <Button type="submit"/>
     </Form>
@@ -51,8 +54,8 @@
 ]}
 >
 
-    <Table bind:refresh={refreshTableCiudadanos} 
-        title="Ciudadanos" queryTo={"ciudadano"} 
+    <Table bind:refreshTable
+        title="Departamentos" queryTo={target} 
     />
 
 </TabViewer>

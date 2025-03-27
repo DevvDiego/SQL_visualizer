@@ -13,7 +13,9 @@
     }
 
     function sendFormData(formData){
-        fetch("http://localhost/www/sveltecrud/backend/insert.php",{
+        let URL = "http://localhost/www/sveltecrud/backend/insert.php?" + target;
+        
+        fetch(URL,{
             method: "POST", 
             body: formData
         })
@@ -32,11 +34,11 @@
         const formData = getFormData(e);
         sendFormData(formData);
 
-        refresh = true;
+        refreshTable = true;
     }
 
 
-    let { refresh = $bindable(), children } = $props();
+    let { target, refreshTable = $bindable(), children } = $props();
 </script>
 
 

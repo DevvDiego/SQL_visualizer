@@ -8,7 +8,7 @@
     })
 
     $effect(()=>{
-        if(refresh){
+        if(refreshTable){
             getData(queryTo);
         }
     })
@@ -22,7 +22,7 @@
             console.log("datos de tabla cargados");
             data = json;
 
-            refresh = false; //we think the table might have been refreshed, so we falsy it
+            refreshTable = false; //we think the table might have been refreshed, so we falsy it
         })
 
     }
@@ -31,7 +31,7 @@
 
 
 
-    let { title, queryTo, refresh = $bindable() } = $props();
+    let { title, queryTo, refreshTable = $bindable() } = $props();
 </script>
 
 
