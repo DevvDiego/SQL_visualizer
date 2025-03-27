@@ -1,36 +1,86 @@
 <?php
 include("dbconn.php");
+header('Content-Type: application/json');
+    
+
+function insert_departamentos($dbconn){
+
+    if( ! isset($_POST["nombre"]) ){
+        die("[STMT INSERT] No name given for departamento");
+    }
+
+    $stmt = $dbconn->prepare("INSERT INTO departamentos (nombre) VALUES (?)");
+    $stmt->bind_param("s", $_POST["nombre"]);
+
+    if ($stmt->execute()) {
+        echo "[STMT INSERT] Datos insertados exitosamente";
+    } else {
+        echo "[STMT INSERT] Error: " . $stmt->error;
+    }
+    
+    $stmt->close();
+}
+
+function insert_cursos($dbconn){
+
+    if( ! isset($_POST["id_departamento"]) ){
+        die("[STMT INSERT] No id_departamento given for curso");
+    }
+    if( ! isset($_POST["nombre"]) ){
+        die("[STMT INSERT] No name given for curso");
+    }
+
+    $stmt = $dbconn->prepare("INSERT INTO cursos (id_departamento, nombre) VALUES (?,?)");
+    $stmt->bind_param("ss", $_POST["id_departamento"], $_POST["nombre"]);
+
+    if ($stmt->execute()) {
+        echo "[STMT INSERT] Datos insertados exitosamente";
+    } else {
+        echo "[STMT INSERT] Error: " . $stmt->error;
+    }
+    
+    $stmt->close();
+}
+
+
+function insert_profesores($dbconn){
+
+    if( ! isset($_POST["nombre"]) ){
+        die("[STMT INSERT] No name given for profesor");
+    }
+
+    $stmt = $dbconn->prepare("INSERT INTO profesores (nombre) VALUES (?)");
+    $stmt->bind_param("s", $_POST["nombre"]);
+
+    if ($stmt->execute()) {
+        echo "[STMT INSERT] Datos insertados exitosamente";
+    } else {
+        echo "[STMT INSERT] Error: " . $stmt->error;
+    }
+    
+    $stmt->close();
+}
+
 
 try{
 
-    //Get the parameters
-    if( isset( $_POST["nombre"] ) ){
-        $nombre = $_POST["nombre"];
+    if( ! isset($_POST["target"]) ){
+        die("No target table");
     }
 
-    if( isset( $_POST["edad"] ) ){
-        $edad = $_POST["edad"];
+    $targetTable = $_POST["target"];
+
+    switch ($targetTable) {
+        case "departamentos":
+            insert_departamentos($dbconn);
+            break;
+        
+        default:
+            # code...
+            break;
     }
-
-    if( isset( $_POST["ciudad"] ) ){
-        $ciudad = $_POST["ciudad"];
-    }
-
-    $stmt = $dbconn->prepare("INSERT INTO ciudadano (nombre, edad, ciudad) VALUES (?, ?, ?)");
-    $stmt->bind_param("sis", $nombre, $edad, $ciudad);
-
-    if ($stmt->execute()) {
-        echo "Datos insertados correctamente.";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-
-    // regresa una respuesta json
-    // header('Content-Type: application/json');
-    // echo json_encode("ok");
-
-    $stmt->close();
+    
+    //keep here, so even if a func fails, conn gets closed
     $dbconn->close();
     
 }catch(Exception $e){
