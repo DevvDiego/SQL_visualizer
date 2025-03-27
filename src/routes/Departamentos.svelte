@@ -38,6 +38,7 @@
 
     <Form {target} action={"update"} bind:refreshTable>
         <Input title="Identificador" name="id" placeholder="..." />
+        <Input title="Nombre" name="id" placeholder="..." />
         <Button type="submit"/>
     </Form>
 

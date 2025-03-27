@@ -40,7 +40,7 @@
             return response.text();
         })
         .then(json => {
-            console.log(json);
+            console.log("[FORM SUBMIT] Server response: " + json);
         })
     }
 
