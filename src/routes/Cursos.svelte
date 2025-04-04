@@ -39,8 +39,9 @@
 {#snippet actualizarContent()}
 
     <Form {target} action={"update"} bind:refreshTable>
-        <Input title="Identificador" name="id" placeholder="..." />
-        <Input title="Nombre" name="nombre" placeholder="..." />
+        <Input title="Campo a cambiar" name="field" placeholder="..." />
+        <Input title="Valor actual" name="current_data" placeholder="..." />
+        <Input title="Nuevo dato" name="new_data" placeholder="..." />
         <Button type="submit"/>
     </Form>
 
