@@ -1,5 +1,6 @@
 # output
 /frontend
+/backend/dbconn.php
 
 # Logs
 logs
