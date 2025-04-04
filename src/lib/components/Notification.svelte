@@ -4,7 +4,7 @@
     let {status, message} = $props();
 </script>
 
-<div class={status=="ok"? "successful":"error" }>
+<div class={status=="successful"? "successful":"error" }>
     <h1>{status}</h1>
     <p>
         {message}
