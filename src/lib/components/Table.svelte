@@ -10,6 +10,7 @@
     $effect(()=>{
         if(refreshTable){
             getData(queryTo);
+            console.log("effect")
         }
     })
 
