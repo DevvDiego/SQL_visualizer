@@ -19,7 +19,7 @@
             return response.json();
         })
         .then(json => {
-            console.log("datos de tabla cargados");
+            console.log("[TABLE] Table refreshed");
             data = json;
 
             refreshTable = false; //we think the table might have been refreshed, so we falsy it
