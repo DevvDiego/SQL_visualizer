@@ -19,6 +19,42 @@ function delete_departamentos($dbconn){
     $stmt->close();
 }
 
+function delete_cursos($dbconn){
+
+    if( ! isset($_POST["nombre"]) ){
+        die("[STMT INSERT] No name given for cursos");
+    }
+
+    $stmt = $dbconn->prepare("DELETE FROM cursos WHERE nombre = ?");
+    $stmt->bind_param("s", $_POST["nombre"]);
+
+    if ($stmt->execute()) {
+        echo "[STMT DELETE] Ejecucion exitosa";
+    } else {
+        echo "[STMT DELETE] Error: " . $stmt->error;
+    }
+    
+    $stmt->close();
+}
+
+function delete_profesores($dbconn){
+
+    if( ! isset($_POST["nombre"]) ){
+        die("[STMT INSERT] No name given for profesores");
+    }
+
+    $stmt = $dbconn->prepare("DELETE FROM profesores WHERE nombre = ?");
+    $stmt->bind_param("s", $_POST["nombre"]);
+
+    if ($stmt->execute()) {
+        echo "[STMT DELETE] Ejecucion exitosa";
+    } else {
+        echo "[STMT DELETE] Error: " . $stmt->error;
+    }
+    
+    $stmt->close();
+}
+
 
 
 
@@ -35,6 +71,12 @@ try{
     switch ($targetTable) {
         case "departamentos":
             delete_departamentos($dbconn);
+            break;
+        case "cursos":
+            delete_cursos($dbconn);
+            break;
+        case "profesores":
+            delete_profesores($dbconn);
             break;
         
         default:
