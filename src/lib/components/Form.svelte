@@ -1,4 +1,6 @@
 <script>
+    import Notification from "./Notification.svelte";
+
 
     function getFormData(e){
         const formData = new FormData();
@@ -41,6 +43,7 @@
         })
         .then(json => {
             console.log("[FORM SUBMIT] Server response: " + json);
+            handleResponse(json);
         })
     }
 
@@ -53,11 +56,43 @@
         refreshTable = true;
     }
 
+    /**
+     * 
+     * @param {string} response
+     */
+    function handleResponse(response){
+
+        if( response.includes("[ERROR]") ){
+            handleNotification("error",response);
+        }
+
+        handleNotification("successful",response);
+
+    }
+
+    function handleNotification(status, res){
+        hasPendingNotification = true;
+        setInterval(() => {
+            hasPendingNotification = false;
+        }, 20*1000);
+        notificationStatus = status;
+        notificationMessage = res;
+        
+    }
     
+    let hasPendingNotification = $state(false);
+    let notificationStatus = $state("bad");
+    let notificationMessage = $state("");
+
     let { target, action, refreshTable = $bindable(), children } = $props();
 </script>
 
 
 <form onsubmit={handleForm}>
+    
+    {#if hasPendingNotification}
+        <Notification status={notificationStatus} message={notificationMessage} />
+    {/if}
+
     {@render children()}
 </form>
