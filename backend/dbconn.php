@@ -1,6 +1,7 @@
 <?php
 include("config/headers.php");
 
+//DEVELOPMENT
 $user="root";
 $host="localhost";
 $db="universidad";
