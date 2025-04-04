@@ -4,16 +4,22 @@ include("dbconn.php");
 
 function update_departamentos($dbconn){
 
-    if( ! isset($_POST["nombre"]) ){
-        die("[STMT UPDATE] No identifier given for departamento");
+    if( ! isset($_POST["field"]) ){
+        die("[STMT UPDATE] No field given for departamento");
+    }
+    
+    if( ! isset($_POST["current_data"]) ){
+        die("[STMT UPDATE] No current_data given for departamento");
+    }
+    
+    if( ! isset($_POST["new_data"]) ){
+        die("[STMT UPDATE] No new_data given for departamento");
     }
 
-    if( ! isset($_POST["nombre"]) ){
-        die("[STMT UPDATE] No name given for departamento");
-    }
+    $field = $_POST["field"]; //use this to not update dinamically the prepared stmt
 
-    $stmt = $dbconn->prepare("UPDATE departamentos SET nombre = ? WHERE id_departamento = ?");
-    $stmt->bind_param("si", $_POST["nombre"], $_POST["identifier"]);
+    $stmt = $dbconn->prepare("UPDATE departamentos SET $field = ? WHERE $field = ?");
+    $stmt->bind_param("ss", $_POST["new_data"], $_POST["current_data"],);
 
     if ($stmt->execute()) {
         echo "[STMT UPDATE] Datos actualizados exitosamente";
@@ -27,16 +33,23 @@ function update_departamentos($dbconn){
 
 function update_cursos($dbconn){
 
-    if( ! isset($_POST["nombre"]) ){
-        die("[STMT UPDATE] No identifier given for curso");
+    if( ! isset($_POST["field"]) ){
+        die("[STMT UPDATE] No field given for departamento");
+    }
+    
+    if( ! isset($_POST["current_data"]) ){
+        die("[STMT UPDATE] No current_data given for departamento");
+    }
+    
+    if( ! isset($_POST["new_data"]) ){
+        die("[STMT UPDATE] No new_data given for departamento");
     }
 
-    if( ! isset($_POST["nombre"]) ){
-        die("[STMT UPDATE] No name given for curso");
-    }
+    $field = $_POST["field"]; //use this to not update dinamically the prepared stmt
 
-    $stmt = $dbconn->prepare("UPDATE cursos SET nombre = ? WHERE id_curso = ?");
-    $stmt->bind_param("si", $_POST["nombre"], $_POST["identifier"]);
+    $stmt = $dbconn->prepare("UPDATE departamentos SET $field = ? WHERE $field = ?");
+    $stmt->bind_param("ss", $_POST["new_data"], $_POST["current_data"],);
+
 
     if ($stmt->execute()) {
         echo "[STMT UPDATE] Datos actualizados exitosamente";
@@ -50,16 +63,22 @@ function update_cursos($dbconn){
 
 function update_profesores($dbconn){
     
-    if( ! isset($_POST["nombre"]) ){
-        die("[STMT UPDATE] No identifier given for profesor");
+    if( ! isset($_POST["field"]) ){
+        die("[STMT UPDATE] No field given for departamento");
+    }
+    
+    if( ! isset($_POST["current_data"]) ){
+        die("[STMT UPDATE] No current_data given for departamento");
+    }
+    
+    if( ! isset($_POST["new_data"]) ){
+        die("[STMT UPDATE] No new_data given for departamento");
     }
 
-    if( ! isset($_POST["nombre"]) ){
-        die("[STMT UPDATE] No name given for profesor");
-    }
+    $field = $_POST["field"]; //use this to not update dinamically the prepared stmt
 
-    $stmt = $dbconn->prepare("UPDATE profesores SET nombre = ? WHERE id_profesor = ?");
-    $stmt->bind_param("si", $_POST["nombre"], $_POST["identifier"]);
+    $stmt = $dbconn->prepare("UPDATE departamentos SET $field = ? WHERE $field = ?");
+    $stmt->bind_param("ss", $_POST["new_data"], $_POST["current_data"],);
 
     if ($stmt->execute()) {
         echo "[STMT UPDATE] Datos actualizados exitosamente";
