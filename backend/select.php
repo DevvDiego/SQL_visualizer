@@ -31,7 +31,7 @@ try{
     $dbconn->close();
     
 }catch(Exception $e){
-    echo $e->getMessage();
+    echo "[ERROR] ". $e->getMessage();
 }
 
 ?>

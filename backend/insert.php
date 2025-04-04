@@ -5,7 +5,7 @@ include("dbconn.php");
 function insert_departamentos($dbconn){
 
     if( ! isset($_POST["nombre"]) ){
-        die("[STMT INSERT] No name given for departamento");
+        die("[STMT INSERT] [ERROR] No name given for departamento");
     }
 
     $stmt = $dbconn->prepare("INSERT INTO departamentos (nombre) VALUES (?)");
@@ -14,7 +14,7 @@ function insert_departamentos($dbconn){
     if ($stmt->execute()) {
         echo "[STMT INSERT] Datos insertados exitosamente";
     } else {
-        echo "[STMT INSERT] Error: " . $stmt->error;
+        echo "[STMT INSERT] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -23,10 +23,10 @@ function insert_departamentos($dbconn){
 function insert_cursos($dbconn){
 
     if( ! isset($_POST["id_departamento"]) ){
-        die("[STMT INSERT] No id_departamento given for curso");
+        die("[STMT INSERT] [ERROR] No id_departamento given for curso");
     }
     if( ! isset($_POST["nombre"]) ){
-        die("[STMT INSERT] No name given for curso");
+        die("[STMT INSERT] [ERROR] No name given for curso");
     }
 
     $stmt = $dbconn->prepare("INSERT INTO cursos (id_departamento, nombre) VALUES (?,?)");
@@ -35,7 +35,7 @@ function insert_cursos($dbconn){
     if ($stmt->execute()) {
         echo "[STMT INSERT] Datos insertados exitosamente";
     } else {
-        echo "[STMT INSERT] Error: " . $stmt->error;
+        echo "[STMT INSERT] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -45,7 +45,7 @@ function insert_cursos($dbconn){
 function insert_profesores($dbconn){
 
     if( ! isset($_POST["nombre"]) ){
-        die("[STMT INSERT] No name given for profesor");
+        die("[STMT INSERT] [ERROR] No name given for profesor");
     }
 
     $stmt = $dbconn->prepare("INSERT INTO profesores (nombre) VALUES (?)");
@@ -54,7 +54,7 @@ function insert_profesores($dbconn){
     if ($stmt->execute()) {
         echo "[STMT INSERT] Datos insertados exitosamente";
     } else {
-        echo "[STMT INSERT] Error: " . $stmt->error;
+        echo "[STMT INSERT] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -64,7 +64,7 @@ function insert_profesores($dbconn){
 try{
 
     if( ! isset($_POST["target"]) ){
-        die("No target table");
+        die("[ERROR] No target table");
     }
 
     $targetTable = $_POST["target"];
@@ -89,7 +89,7 @@ try{
     $dbconn->close();
     
 }catch(Exception $e){
-    echo $e->getMessage();
+    echo "[ERROR] " . $e->getMessage();
 }
 
 ?>

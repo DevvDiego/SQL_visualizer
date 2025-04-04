@@ -5,15 +5,15 @@ include("dbconn.php");
 function update_departamentos($dbconn){
 
     if( ! isset($_POST["field"]) ){
-        die("[STMT UPDATE] No field given for departamento");
+        die("[STMT UPDATE] [ERROR] No field given for departamento");
     }
     
     if( ! isset($_POST["current_data"]) ){
-        die("[STMT UPDATE] No current_data given for departamento");
+        die("[STMT UPDATE] [ERROR] No current_data given for departamento");
     }
     
     if( ! isset($_POST["new_data"]) ){
-        die("[STMT UPDATE] No new_data given for departamento");
+        die("[STMT UPDATE] [ERROR] No new_data given for departamento");
     }
 
     $field = $_POST["field"]; //use this to not update dinamically the prepared stmt
@@ -24,7 +24,7 @@ function update_departamentos($dbconn){
     if ($stmt->execute()) {
         echo "[STMT UPDATE] Datos actualizados exitosamente";
     } else {
-        echo "[STMT UPDATE] Error: " . $stmt->error;
+        echo "[STMT UPDATE] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -34,15 +34,15 @@ function update_departamentos($dbconn){
 function update_cursos($dbconn){
 
     if( ! isset($_POST["field"]) ){
-        die("[STMT UPDATE] No field given for departamento");
+        die("[STMT UPDATE] [ERROR] No field given for departamento");
     }
     
     if( ! isset($_POST["current_data"]) ){
-        die("[STMT UPDATE] No current_data given for departamento");
+        die("[STMT UPDATE] [ERROR] No current_data given for departamento");
     }
     
     if( ! isset($_POST["new_data"]) ){
-        die("[STMT UPDATE] No new_data given for departamento");
+        die("[STMT UPDATE] [ERROR] No new_data given for departamento");
     }
 
     $field = $_POST["field"]; //use this to not update dinamically the prepared stmt
@@ -54,7 +54,7 @@ function update_cursos($dbconn){
     if ($stmt->execute()) {
         echo "[STMT UPDATE] Datos actualizados exitosamente";
     } else {
-        echo "[STMT UPDATE] Error: " . $stmt->error;
+        echo "[STMT UPDATE] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -64,15 +64,15 @@ function update_cursos($dbconn){
 function update_profesores($dbconn){
     
     if( ! isset($_POST["field"]) ){
-        die("[STMT UPDATE] No field given for departamento");
+        die("[STMT UPDATE] [ERROR] No field given for departamento");
     }
     
     if( ! isset($_POST["current_data"]) ){
-        die("[STMT UPDATE] No current_data given for departamento");
+        die("[STMT UPDATE] [ERROR] No current_data given for departamento");
     }
     
     if( ! isset($_POST["new_data"]) ){
-        die("[STMT UPDATE] No new_data given for departamento");
+        die("[STMT UPDATE] [ERROR] No new_data given for departamento");
     }
 
     $field = $_POST["field"]; //use this to not update dinamically the prepared stmt
@@ -83,7 +83,7 @@ function update_profesores($dbconn){
     if ($stmt->execute()) {
         echo "[STMT UPDATE] Datos actualizados exitosamente";
     } else {
-        echo "[STMT UPDATE] Error: " . $stmt->error;
+        echo "[STMT UPDATE] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -93,7 +93,7 @@ function update_profesores($dbconn){
 try{
 
     if( ! isset($_POST["target"]) ){
-        die("No target table");
+        die("[ERROR] No target table");
     }
 
     $targetTable = $_POST["target"];
@@ -118,7 +118,7 @@ try{
     $dbconn->close();
     
 }catch(Exception $e){
-    echo $e->getMessage();
+    echo "[ERROR] " . $e->getMessage();
 }
 
 ?>

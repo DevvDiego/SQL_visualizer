@@ -4,7 +4,7 @@ include("dbconn.php");
 function delete_departamentos($dbconn){
 
     if( ! isset($_POST["nombre"]) ){
-        die("[STMT INSERT] No name given for departamento");
+        die("[STMT INSERT] [ERROR] No name given for departamento");
     }
 
     $stmt = $dbconn->prepare("DELETE FROM departamentos WHERE nombre = ?");
@@ -13,7 +13,7 @@ function delete_departamentos($dbconn){
     if ($stmt->execute()) {
         echo "[STMT DELETE] Ejecucion exitosa";
     } else {
-        echo "[STMT DELETE] Error: " . $stmt->error;
+        echo "[STMT DELETE] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -22,7 +22,7 @@ function delete_departamentos($dbconn){
 function delete_cursos($dbconn){
 
     if( ! isset($_POST["nombre"]) ){
-        die("[STMT INSERT] No name given for cursos");
+        die("[STMT INSERT] [ERROR] No name given for cursos");
     }
 
     $stmt = $dbconn->prepare("DELETE FROM cursos WHERE nombre = ?");
@@ -31,7 +31,7 @@ function delete_cursos($dbconn){
     if ($stmt->execute()) {
         echo "[STMT DELETE] Ejecucion exitosa";
     } else {
-        echo "[STMT DELETE] Error: " . $stmt->error;
+        echo "[STMT DELETE] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -40,7 +40,7 @@ function delete_cursos($dbconn){
 function delete_profesores($dbconn){
 
     if( ! isset($_POST["nombre"]) ){
-        die("[STMT INSERT] No name given for profesores");
+        die("[STMT INSERT] [ERROR] No name given for profesores");
     }
 
     $stmt = $dbconn->prepare("DELETE FROM profesores WHERE nombre = ?");
@@ -49,7 +49,7 @@ function delete_profesores($dbconn){
     if ($stmt->execute()) {
         echo "[STMT DELETE] Ejecucion exitosa";
     } else {
-        echo "[STMT DELETE] Error: " . $stmt->error;
+        echo "[STMT DELETE] [ERROR] Error: " . $stmt->error;
     }
     
     $stmt->close();
@@ -63,7 +63,7 @@ function delete_profesores($dbconn){
 try{
 
     if( ! isset($_POST["target"]) ){
-        die("No target table");
+        die("[ERROR] No target table");
     }
 
     $targetTable = $_POST["target"];
@@ -88,7 +88,7 @@ try{
     $dbconn->close();
     
 }catch(Exception $e){
-    echo $e->getMessage();
+    echo "[ERROR]" . $e->getMessage();
 }
 
 
