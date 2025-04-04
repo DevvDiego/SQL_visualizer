@@ -7,7 +7,7 @@
 
     let refreshTable = $state(false);
 
-    let target = "profesores";
+    let target = "cursos";
 
 </script>
 
@@ -22,6 +22,7 @@
 
     <Form {target} action={"insert"} bind:refreshTable>
         <Input title="Nombre" name="nombre" placeholder="..."/>
+        <Input title="ID del departamento" name="id_departamento" placeholder="..."/>
         <Button type="submit"/>
     </Form> 
 
