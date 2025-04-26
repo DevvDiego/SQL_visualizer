@@ -6,6 +6,16 @@ export default {
 			pages: '../public',
 			assets: '../public',
 			fallback: "404.html",
-		})
+		
+		}),
+
+		paths: {
+			// dev
+			base: "/www/tradex/public"
+
+			// prod
+			// base: ""
+
+		}
 	}
 };

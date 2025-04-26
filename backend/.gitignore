@@ -1,2 +1,5 @@
-auth
-config
+
+!auth/*.example.php
+
+config/*.php
+!config/*.example.php
