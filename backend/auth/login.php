@@ -12,7 +12,7 @@
     $password = $data['password'] ?? '';
 
 
-    connect_database();
+    $pdo = connect_database();
 
     
     // Busca el usuario en la base de datos

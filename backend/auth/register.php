@@ -17,7 +17,7 @@
 
     }
 
-    connect_database();
+    $pdo = connect_database();
 
     // Verifica si el usuario ya existe
     $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
