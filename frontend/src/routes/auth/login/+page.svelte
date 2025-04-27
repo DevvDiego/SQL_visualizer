@@ -52,3 +52,7 @@
     </button>
 
 </form>
+
+<button>
+    <a href="http://localhost:80/{base}/backend/auth/logout.php">logout</a>
+</button>
