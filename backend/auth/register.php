@@ -1,6 +1,8 @@
 <?php
+
+
+    require("../connect_database.php");
     session_start();
-    require("../connect_mysql.php");
 
 
     // Validar datos
