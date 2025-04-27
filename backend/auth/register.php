@@ -1,7 +1,8 @@
 <?php
-
-
-    require("../connect_database.php");
+    require("../config/cors.php");
+    require("../db/connect_database.php");
+    
+    
     session_start();
 
 
@@ -15,6 +16,8 @@
         die(json_encode("Usuario y contraseña requeridos"));
 
     }
+
+    connect_database();
 
     // Verifica si el usuario ya existe
     $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");

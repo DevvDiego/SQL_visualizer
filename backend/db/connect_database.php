@@ -1,7 +1,7 @@
 <?php
 
 function connect_database(){
-    $credentials = require("config/credentials.php");
+    $credentials = require("../config/credentials.php");
 
     $DB_HOST = $credentials["DB_HOST"];
     $DB_NAME = $credentials["DB_NAME"];
