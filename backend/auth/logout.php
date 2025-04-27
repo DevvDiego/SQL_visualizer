@@ -1,4 +1,5 @@
 <?php
+require("../config/cors.php");
 
 session_start(); // Necesario para acceder a la sesión
 
