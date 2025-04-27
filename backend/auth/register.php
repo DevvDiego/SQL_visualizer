@@ -1,5 +1,7 @@
 <?php
+    session_start();
     require("../connect_mysql.php");
+
 
     // Validar datos
     $data = json_decode( file_get_contents("php://input"), true );
@@ -28,8 +30,8 @@
 
         
     // Guarda datos en la sesión
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['username'] = $user['username'];
+    $_SESSION['user_id'] = $pdo->lastInsertId();;
+    $_SESSION['username'] = $username;
 
     // Opcional: Regenera el ID de sesión para prevenir fixation attacks
     session_regenerate_id(true);
