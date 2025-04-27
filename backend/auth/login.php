@@ -18,19 +18,17 @@
     // Busca el usuario en la base de datos
     $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->execute([$username]);
-    $user = $stmt->fetch(); // Obtiene el usuario como array asociativo
-
+    $user_data = $stmt->fetch(); // Obtiene el usuario como array asociativo
 
     // Si no existe el usuario o la contraseña no coincide
-    if (!$user || !password_verify($password, $user['password'])) {
+    if (!$user_data || !password_verify($password, $user_data['password'])) {
         http_response_code(401); // 401: No autorizado
-        die(json_encode("Credenciales inválidas"));
+        die(json_encode("Credenciales invalidas"));
     }
 
-
     // Guarda datos en la sesión
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['username'] = $user['username'];
+    $_SESSION['user_id'] = $user_data['id'];
+    $_SESSION['username'] = $user_data['username'];
 
 
     // Opcional: Regenera el ID de sesión para prevenir fixation attacks
