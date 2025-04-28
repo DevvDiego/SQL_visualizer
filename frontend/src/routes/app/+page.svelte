@@ -1,23 +1,27 @@
 <script>
+    import { base } from "$app/paths";
+    import { onMount } from "svelte";
 
-    let is_logged = $state(true);
+    async function loadData(){
+        const res = await fetch("http://localhost:80"+ base +"/backend/api/app.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include" // Necesario para cookies de sesión
+        });
+        api_data = await res.json();
+        console.log(api_data);
+    }
+    let api_data = $state("");
+    onMount(loadData);
 
-    // is_logged = data.user.authenticated
 
-
-	/** @type {import('./$types').LayoutProps} */
 	let { data, children } = $props();
 </script>
 
-{#if is_logged}
-    
-    <h1>DENTRO DE RUTA PROTEGIDA</h1>
 
-    <h3>
-        {data}
-    </h3>
+<h1>DENTRO DE RUTA PROTEGIDA</h1>
 
-
-{:else}
-    <h1>No has iniciado sesion</h1>
-{/if}
+<h2>Usuario: {data.user.username}</h2>
+<h2>Datos de la api protegida: {api_data}</h2>
