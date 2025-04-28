@@ -1,4 +1,5 @@
 <?php
+require("../config/cors.php");
 
 session_start();
 
@@ -6,7 +7,6 @@ session_start();
 if (isset($_SESSION['user_id'])) {
     // Usuario autenticado
     http_response_code(200);
-    header('Content-Type: application/json');
     echo json_encode([
         'authenticated' => true,
         'user_id' => $_SESSION['user_id'],
@@ -17,7 +17,6 @@ if (isset($_SESSION['user_id'])) {
 } else {
     // Usuario no autenticado
     http_response_code(401);
-    header('Content-Type: application/json');
     echo json_encode([
         'authenticated' => false,
         'message' => 'No autorizado'
