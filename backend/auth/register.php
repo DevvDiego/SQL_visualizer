@@ -1,7 +1,7 @@
 <?php
     require("../config/cors.php");
     require("../db/connect_database.php");
-    
+    require("../utils/send_json_response.php");
     
     session_start();
 
@@ -12,9 +12,9 @@
     $password = $data['password'] ?? '';
 
     if ( empty($username) || empty($password) ) {
-        http_response_code(400); //Código 400: Bad Request
-        die(json_encode("Usuario y contraseña requeridos"));
-
+        //Código 400: Bad Request
+        send_json_response(400, "Usuario y contraseña requeridos");
+        exit;
     }
 
     $pdo = connect_database();
@@ -23,8 +23,10 @@
     $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
     $stmt->execute([$username]);
     if ($stmt->fetch()) { // Si hay resultados, el usuario existe
-        http_response_code(409); // 409: Conflicto (recurso ya existe)
-        die(json_encode("El usuario ya existe"));
+        // 409: Conflicto (recurso ya existe)
+        send_json_response(409, "El usuario ya existe");
+        exit;
+
     }    
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -42,6 +44,6 @@
     session_regenerate_id(true);
 
     // Confirma éxito
-    echo json_encode(["success" => "true"]);
-
+    send_json_response(200, "success");
+    exit;
 ?>

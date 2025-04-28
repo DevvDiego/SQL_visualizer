@@ -1,6 +1,7 @@
 <?php
     require("../config/cors.php");
     require("../db/connect_database.php");
+    require("../utils/send_json_response.php");
     
     
     session_start();
@@ -22,8 +23,8 @@
 
     // Si no existe el usuario o la contraseña no coincide
     if (!$user_data || !password_verify($password, $user_data['password'])) {
-        http_response_code(401); // 401: No autorizado
-        die(json_encode("Credenciales invalidas"));
+        send_json_response(401, "Invalid credentials");
+        exit;
     }
 
     // Guarda datos en la sesión
@@ -36,6 +37,6 @@
 
 
     // Confirma éxito
-    echo json_encode(["success" => true]);
-
+    send_json_response(200, "success");
+    exit;
 ?>
