@@ -1,15 +1,5 @@
 <?php
 /**
- * 
- * @param array $data Assoc Array that contains the answer information
- *                      - "status" (string): internal code to identify the problem
- *                      - "message" (string): message to send
- * 
- */
-
-
-
-/**
  * Answers a request made to the endpoint with a json.
  * 
  * @param int $httpCode HTTP response code
@@ -30,6 +20,4 @@ function send_json_response($httpCode, $message="empty response") : never {
     echo( json_encode( $message ) );
     exit;
 }
-
-
 ?>
