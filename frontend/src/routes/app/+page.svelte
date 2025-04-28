@@ -20,7 +20,10 @@
 	let { data, children } = $props();
 </script>
 
-
+<!-- ! Como obtendre los datos y asegurare que la sesion sigue siendo valida? -->
+<!-- ? tendria que enviar en cada solicitud la cookie y en la cookie en user_id
+?      y ya ahi se manda a php y en php verificamos si existe esa sesion??  
+-->
 <h1>DENTRO DE RUTA PROTEGIDA</h1>
 
 <h2>Usuario: {data.user.username}</h2>

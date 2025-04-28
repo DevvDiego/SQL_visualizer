@@ -11,7 +11,10 @@ export default {
 
 		paths: {
 			// dev
-			base: "/www/tradex/public"
+			base: "/www/tradex"
+
+			//staging
+			// base: "/www/tradex/public"
 
 			// prod
 			// base: ""

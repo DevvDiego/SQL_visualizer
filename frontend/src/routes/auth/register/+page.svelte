@@ -24,8 +24,8 @@
         });
 
         if (res.ok) {
-            // window.location.href = {base}+"/login";
-            console.log(res.json())
+            window.location.href = {base}+"/login";
+            // console.log(res.json())
         } else {
             error = await res.text();
         }
@@ -33,6 +33,11 @@
 
 </script>
 
+{#if error != ""}
+    <div class="w-32 h-20 bg-blue-400 text-white">
+        {error}
+    </div>
+{/if}
 
 <form class="p-5" onsubmit={handleForm}>
 
