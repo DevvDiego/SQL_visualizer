@@ -7,7 +7,7 @@
  * 
  * @return never
  */
-function send_json_response($httpCode, $message="empty response") : never {
+function send_json_and_exit($httpCode, $message="empty response") : never {
     header("Content-Type: application/json");
     http_response_code( $httpCode );
     

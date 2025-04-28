@@ -1,7 +1,7 @@
 <?php
     require("../config/cors.php");
     require("../db/connect_database.php");
-    require("../utils/send_json_response.php");
+    require("../utils/send_json_and_exit.php");
     
     session_start();
 
@@ -11,12 +11,6 @@
     $username = $data['username'] ?? '';
     $password = $data['password'] ?? '';
 
-    if ( empty($username) || empty($password) ) {
-        //Código 400: Bad Request
-        send_json_response(400, "Usuario y contraseña requeridos");
-        exit;
-    }
-
     $pdo = connect_database();
 
     // Verifica si el usuario ya existe
@@ -24,9 +18,7 @@
     $stmt->execute([$username]);
     if ($stmt->fetch()) { // Si hay resultados, el usuario existe
         // 409: Conflicto (recurso ya existe)
-        send_json_response(409, "El usuario ya existe");
-        exit;
-
+        send_json_and_exit(409, "El usuario ya existe");
     }    
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -44,6 +36,5 @@
     session_regenerate_id(true);
 
     // Confirma éxito
-    send_json_response(200, "success");
-    exit;
+    send_json_and_exit(200, "success");
 ?>

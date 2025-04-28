@@ -1,7 +1,7 @@
 <?php
     require("../config/cors.php");
     require("../db/connect_database.php");
-    require("../utils/send_json_response.php");
+    require("../utils/send_json_and_exit.php");
     
     
     session_start();
@@ -12,6 +12,10 @@
     $username = $data['username'] ?? '';
     $password = $data['password'] ?? '';
 
+    if ( empty($username) || empty($password) ) {
+        //Código 400: Bad Request
+        send_json_and_exit(400, "Usuario y contraseña requeridos");
+    }
 
     $pdo = connect_database();
 
@@ -23,8 +27,7 @@
 
     // Si no existe el usuario o la contraseña no coincide
     if (!$user_data || !password_verify($password, $user_data['password'])) {
-        send_json_response(401, "Invalid credentials");
-        exit;
+        send_json_and_exit(401, "Invalid credentials");
     }
 
     // Guarda datos en la sesión
@@ -37,6 +40,5 @@
 
 
     // Confirma éxito
-    send_json_response(200, "success");
-    exit;
+    send_json_and_exit(200, "success");
 ?>
