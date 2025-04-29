@@ -1,7 +1,7 @@
 <?php
     require("../config/cors.php");
     require("../db/connect_database.php");
-    require("../utils/send_json_and_exit.php");
+    require("../utils/JsonResponse.php");
     
     session_start();
 
@@ -18,7 +18,7 @@
     $stmt->execute([$username]);
     if ($stmt->fetch()) { // Si hay resultados, el usuario existe
         // 409: Conflicto (recurso ya existe)
-        send_json_and_exit(409, "El usuario ya existe");
+        JsonResponse::send_and_exit(409, "El usuario ya existe");
     }    
 
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -36,5 +36,5 @@
     session_regenerate_id(true);
 
     // Confirma éxito
-    send_json_and_exit(200, "success");
+    JsonResponse::send_and_exit(200, "success");
 ?>

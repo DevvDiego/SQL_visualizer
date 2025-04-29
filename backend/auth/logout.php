@@ -1,6 +1,6 @@
 <?php
 require("../config/cors.php");
-require("../utils/send_json_and_exit.php");
+require("../utils/JsonResponse.php");
 
 session_start(); // Necesario para acceder a la sesión
 
@@ -12,6 +12,6 @@ session_destroy();
 
 // Redirige al login (en el frontend)
 // header("Location: http://localhost/login");
-send_json_and_exit(200, "logged out")
+JsonResponse::send_and_exit(200, "logged out")
 
 ?>
