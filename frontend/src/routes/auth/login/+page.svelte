@@ -25,7 +25,7 @@
 
         if (res.ok) {
             // window.location.href = {base}+"/login";
-            console.log(res.json())
+            console.log(await res.json())
         } else {
             error = await res.text();
         }
