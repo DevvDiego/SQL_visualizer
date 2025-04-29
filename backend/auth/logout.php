@@ -1,6 +1,6 @@
 <?php
-require("../config/cors.php");
-require("../utils/JsonResponse.php");
+require_once("../config/cors.php");
+require_once("../utils/JsonResponse.php");
 
 session_start(); // Necesario para acceder a la sesión
 

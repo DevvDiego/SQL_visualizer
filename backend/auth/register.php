@@ -1,7 +1,7 @@
 <?php
-    require("../config/cors.php");
-    require("../db/connect_database.php");
-    require("../utils/JsonResponse.php");
+    require_once("../config/cors.php");
+    require_once("../db/connect_database.php");
+    require_once("../utils/JsonResponse.php");
     
     session_start();
 
