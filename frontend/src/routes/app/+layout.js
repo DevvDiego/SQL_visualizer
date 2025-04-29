@@ -1,4 +1,4 @@
-import { error, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { base } from "$app/paths";
 
 /** @type {import('./$types').PageLoad} */
@@ -11,25 +11,8 @@ export async function load({ fetch ,params }) {
 		},
 		credentials: "include" // Necesario para cookies de sesión
 	});
-
-	let res_body = await res.json();
 	
-	if (res.ok) {
-		return{
-			user:{
-				'authenticated':res_body.authenticated,
-				'user_id': res_body.user_id,
-				'username': res_body.username
-			}
-		}
-
-	} else {
-		return{
-			user:{
-				'authenticated':res_body.authenticated,
-				'message':res_body.message
-			}
-		}
-		
+	if (!res.ok) {
+		throw redirect(303, base+"/auth/login");
 	}
 }
