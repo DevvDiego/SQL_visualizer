@@ -12,7 +12,4 @@ if( !isset($_SESSION["user_id"]) ){
     
 }
 
-//at this point the user exist and is authenticated
-JsonResponse::send_and_continue(200, ["authenticated" => true]);
-
 ?>
